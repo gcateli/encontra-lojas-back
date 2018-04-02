@@ -1,0 +1,19 @@
+app:
+  datasource:
+    mysql:
+      url: jdbc:mysql://magalu-finder.csbetkdiyivo.us-east-2.rds.amazonaws.com/magalu_finder_db?autoReconnect=true&useSSL=false
+      userName: gscateli
+      password: "Mysql3797" 
+
+  query:
+    selectprodutofiliais:
+      SELECT FILIAL.CODFIL, FILIAL.DESCRICAO DESCRICAO, FILIAL.CEP CEP
+      FROM  
+      CAD_PRODUTO AS PRODUTO, 
+      CAD_FILIAL AS FILIAL, 
+      PRODUTO_FILIAL AS PRODFILIAL 
+      WHERE PRODUTO.CODPROD = PRODFILIAL.CODPROD  
+        AND FILIAL.CODFIL = PRODFILIAL.CODFIL
+        AND PRODUTO.CODPROD = ?
+      
+  
